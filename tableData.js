@@ -1,0 +1,86 @@
+import mockValues from "./mockValues";
+
+const tableData = [
+  {
+    id: 0,
+    title: "Выручка, руб",
+    currentDay: 500521,
+    yesterday: 480521,
+    thisDayLastWeek: 4805121,
+    graphData: mockValues[0],
+  },
+  {
+    id: 1,
+    title: "Наличные",
+    currentDay: 300000,
+    yesterday: 300000,
+    thisDayLastWeek: 300000,
+    graphData: mockValues[1],
+  },
+  {
+    id: 2,
+    title: "Безналичный расчёт",
+    currentDay: 100000,
+    yesterday: 100000,
+    thisDayLastWeek: 100000,
+    graphData: mockValues[2],
+  },
+  {
+    id: 3,
+    title: "Кредитные карты",
+    currentDay: 100521,
+    yesterday: 100521,
+    thisDayLastWeek: 100521,
+    graphData: mockValues[3],
+  },
+  {
+    id: 4,
+    title: "Средний чек, руб",
+    currentDay: 1300,
+    yesterday: 900,
+    thisDayLastWeek: 900,
+    graphData: mockValues[4],
+  },
+  {
+    id: 5,
+    title: "Средний гость, руб",
+    currentDay: 1200,
+    yesterday: 800,
+    thisDayLastWeek: 800,
+    graphData: mockValues[5],
+  },
+  {
+    id: 6,
+    title: "Удаления из чека (после оплаты), руб",
+    currentDay: 1000,
+    yesterday: 1100,
+    thisDayLastWeek: 900,
+    graphData: mockValues[6],
+  },
+  {
+    id: 7,
+    title: "Удаления из чека (до оплаты), руб",
+    currentDay: 1300,
+    yesterday: 1300,
+    thisDayLastWeek: 900,
+    graphData: mockValues[7],
+  },
+  {
+    id: 8,
+    title: "Количество чеков",
+    currentDay: 34,
+    yesterday: 36,
+    thisDayLastWeek: 34,
+    graphData: mockValues[8],
+  },
+  {
+    id: 9,
+    title: "Количество гостей",
+    currentDay: 34,
+    yesterday: 36,
+    thisDayLastWeek: 32,
+    graphData: mockValues[9],
+  },
+];
+
+export default tableData;

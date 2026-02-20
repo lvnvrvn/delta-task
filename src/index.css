@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #333333;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Google Sans", sans-serif;
+  font-size: 20px;
+  color: #161616;
+}
+
+#root {
+  width: 70%;
+}
+
+.app {
+  width: 100%;
+}
+
+.table {
+  /* display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 5px; */
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 5px;
+}
+
+.table__row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  column-gap: 5px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+.table__row:hover:not(:first-child) {
+  opacity: 0.8;
+}
+
+.table__cell {
+  padding: 15px;
+}
+
+.table__indicator,
+.table__yesterday,
+.table__weekday {
+  background: #d3d3d3;
+}
+
+.table__today {
+  background: #87ceeb;
+}
+
+.bg__green {
+  background: #8fbc8f;
+}
+
+.bg__red {
+  background: #fa8072;
+}
+
+.table__today,
+.table__yesterday,
+.table__weekday {
+  text-align: right;
+}
+
+.cell__center {
+  text-align: center;
+}
+
+.percentage__difference {
+  margin-left: 40px;
+}
+
+.text__green {
+  color: green;
+}
+
+.text__red {
+  color: red;
+}
