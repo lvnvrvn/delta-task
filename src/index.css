@@ -25,9 +25,6 @@ body {
 }
 
 .table {
-  /* display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 5px; */
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 5px;
@@ -44,12 +41,6 @@ body {
 
 .table__row:hover:not(:first-child) {
   opacity: 0.8;
-}
-
-.table__row:first-child {
-  position: sticky;
-  top: 0;
-  z-index: 10;
 }
 
 .table__cell {
@@ -97,8 +88,8 @@ body {
 }
 
 .chart-container {
-  grid-column: 1 / -1; /* Это заставит его растянуться на все колонки грида */
-  background: #f5fffa; /* Можно чуть выделить цветом */
+  grid-column: 1 / -1;
+  background: #f5fffa;
   padding: 20px;
 }
 
@@ -126,12 +117,8 @@ body {
     overflow-x: scroll;
     -webkit-overflow-scrolling: touch;
   }
-  /* .table {
-    overflow-x: scroll;
-  } */
   .table__cell {
     padding: 10px 5px;
-    /* white-space: nowrap; */
   }
   .percentage__difference {
     margin-left: 10px;
@@ -140,7 +127,6 @@ body {
 
 @media (max-width: 425px) {
   .table__row {
-    /* grid-template-columns: 200px repeat(3, 86px); */
     grid-template-columns: 120px repeat(3, 86px);
   }
   .table__row .table__indicator {
@@ -148,25 +134,3 @@ body {
     left: 0;
   }
 }
-
-/* .table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  /* -webkit-overflow-scrolling: touch; */
-/* } */
-/* .table { *
-  min-width: 600px; 
-/* } 
-
-/* @media (max-width: 425px) {
-  .table {
-    /* 
-       Первая колонка (название) — минимум 120px, остальное — сколько останется.
-       Остальные колонки — строго по 80px (или сколько нужно вашим числам), чтобы они не сжимались.
-    */
-/*grid-template-columns: minmax(120px, 2fr) repeat(3, 80px);
-
-    /* Это заставит грид быть шире экрана, если колонки не влезают */
-/*width: max-content;
-  }
-} */

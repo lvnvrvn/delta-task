@@ -23,12 +23,8 @@ export default function Table() {
             textAlign: true,
           }}
         />
-        {/* {tableData.map((obj, index) => (
-        <TableRow key={index} rowData={obj} onClick={() => onRowSelect(row)} />
-      ))} */}
         {tableData.map((row) => (
           <React.Fragment key={row.id}>
-            {/* {console.log("row", row)} */}
             <TableRow
               rowData={row}
               onSelect={() => handleRowClick(row.id)}
