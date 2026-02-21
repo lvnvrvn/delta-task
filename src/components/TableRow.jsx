@@ -1,6 +1,6 @@
 import {} from "react";
 
-export default function TableRow({ rowData }) {
+export default function TableRow({ rowData, onSelect, isActive }) {
   const cellClass = rowData.textAlign ? "cell__center" : "";
   const percentageDifference = Number(
     ((rowData.currentDay / rowData.yesterday - 1) * 100).toFixed(0),
@@ -25,7 +25,10 @@ export default function TableRow({ rowData }) {
   }
 
   return (
-    <div className="table__row">
+    <div
+      className={`table__row ${isActive ? "active" : ""}`}
+      onClick={onSelect}
+    >
       <div className={`table__indicator table__cell ${cellClass}`}>
         {rowData.title}
       </div>

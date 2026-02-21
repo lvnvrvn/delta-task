@@ -1,47 +1,39 @@
 import {
   LineChart,
   Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
   ResponsiveContainer,
+  YAxis,
+  XAxis,
+  Tooltip,
 } from "recharts";
 
-const MyChart = ({ data, title }) => {
-  // 1. Трансформируем массив чисел в формат для Recharts
-  const chartData = data.map((val, index) => ({
-    day: index + 1, // Вместо Пн/Вт пока просто номера дней 1, 2, 3...
-    value: val,
-  }));
+export default function MyChart({ rawNumbers }) {
+  const dataForChart = rawNumbers
+    ? rawNumbers.map((num, index) => ({
+        day: index + 1,
+        value: num,
+      }))
+    : [];
+
+  if (dataForChart.length === 0) return <div>Нет данных для графика</div>;
 
   return (
-    <div style={{ width: "100%", height: 300, marginBottom: "30px" }}>
-      <h2 style={{ textAlign: "left", marginLeft: "20px" }}>{title}</h2>
-
-      {/* ResponsiveContainer позволяет графику растягиваться под ширину экрана */}
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          data={chartData}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="day" />
-          <YAxis hide={false} />{" "}
-          {/* Можно скрыть (true), если в макете нет цифр слева */}
-          <Tooltip />
-          <Line
-            type="monotone"
-            dataKey="value"
-            stroke="#2196f3"
-            strokeWidth={3}
-            dot={{ r: 6 }}
-            activeDot={{ r: 8 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height={250}>
+      <LineChart
+        data={dataForChart}
+        margin={{ top: 10, right: 30, left: 20, bottom: 10 }}
+      >
+        <Line
+          type="monotone"
+          dataKey="value"
+          stroke="#2196f3"
+          strokeWidth={2}
+          dot={true}
+        ></Line>
+        <XAxis dataKey="day" />
+        <YAxis width={80} />
+        <Tooltip />
+      </LineChart>
+    </ResponsiveContainer>
   );
-};
-
-export default MyChart;
+}

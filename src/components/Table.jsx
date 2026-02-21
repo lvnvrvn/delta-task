@@ -1,46 +1,47 @@
+import React, { useState } from "react";
 import tableData from "../../tableData";
 import TableRow from "./TableRow";
+import MyChart from "./MyChart";
 
 export default function Table() {
+  const [openId, setOpenId] = useState(null);
+
+  function handleRowClick(id) {
+    setOpenId(openId === id ? null : id);
+    console.log(id);
+  }
+
   return (
-    <div className="table">
-      <TableRow
-        rowData={{
-          title: "Показатель",
-          currentDay: "Текущий день",
-          yesterday: "Вчера",
-          thisDayLastWeek: "Этот день недели",
-          textAlign: true,
-        }}
-      />
-      {/* {tableData.map((obj, index) => (
+    <div className="table-wrapper">
+      <div className="table">
+        <TableRow
+          rowData={{
+            title: "Показатель",
+            currentDay: "Текущий день",
+            yesterday: "Вчера",
+            thisDayLastWeek: "Этот день недели",
+            textAlign: true,
+          }}
+        />
+        {/* {tableData.map((obj, index) => (
         <TableRow key={index} rowData={obj} onClick={() => onRowSelect(row)} />
       ))} */}
-      {tableData.map((obj, index) => (
-        <TableRow key={index} rowData={obj} onClick={() => onRowSelect(row)} />
-      ))}
+        {tableData.map((row) => (
+          <React.Fragment key={row.id}>
+            {/* {console.log("row", row)} */}
+            <TableRow
+              rowData={row}
+              onSelect={() => handleRowClick(row.id)}
+              isActive={openId === row.id}
+            />
+            {openId === row.id && (
+              <div className="chart-container">
+                <MyChart rawNumbers={row.graphData} />
+              </div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
-}
-
-{
-  tableData.map((row) => (
-    <React.Fragment key={row.id}>
-      {/* 1. Сама строка (то, что мы видим всегда) */}
-      <TableRow
-        row={row}
-        isActive={selectedId === row.id}
-        onClick={() => handleRowClick(row.id)}
-      />
-
-      {/* 2. Контейнер для графика (выезжает только у активной строки) */}
-      <div
-        className={`${s.chartWrapper} ${selectedId === row.id ? s.open : ""}`}
-      >
-        {selectedId === row.id && (
-          <MyChart data={row.graphData} title={row.title} />
-        )}
-      </div>
-    </React.Fragment>
-  ));
 }
